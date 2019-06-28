@@ -9,3 +9,5 @@ class Image(models.Model):
     flagged = models.BooleanField(default=False)
     height = models.PositiveIntegerField(default=0)
     width = models.PositiveIntegerField(default=0)
+    creation_time = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
