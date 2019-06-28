@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class GifStoreConfig(AppConfig):
-    name = 'gif_store'
+class CoolGifsConfig(AppConfig):
+    name = 'cool_gifs'
 
     def ready(self):
         super().ready()

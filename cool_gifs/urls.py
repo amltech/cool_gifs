@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-from gif_store.routers import router
+from .routers import router
 
 urlpatterns = [
     path('api/', include((router.urls, 'gifs'))),
