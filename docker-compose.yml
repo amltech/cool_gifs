@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  web:
+    build: ./
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/usr/src/app/
+    ports:
+      - 8000:8000
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=foo
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=cool_gifs_dev
+      - SQL_USER=gifs_user
+      - SQL_PASSWORD=gifs_password
+      - SQL_HOST=db
+      - SQL_PORT=5432
+      - DATABASE=postgres
+    depends_on:
+      - db
+  db:
+    image: postgres:11.2-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=gifs_user
+      - POSTGRES_PASSWORD=gifs_password
+      - POSTGRES_DB=cool_gifs_dev
+
+volumes:
+  postgres_data:
