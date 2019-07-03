@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<ul>
-{% for image in images %}
-<li><a href="{% url 'detail' image.id %}">{{ image.title }}</a></li>
-{% endfor %}
-</ul>
-{% endblock %}
