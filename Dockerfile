@@ -1,4 +1,9 @@
 FROM python:3.7-alpine
+ARG UID
+ARG GID
+
+RUN addgroup -g $GID -S appuser && \
+  adduser -u $UID -S appuser -G appuser
 
 WORKDIR /usr/src/app
 
@@ -14,6 +19,7 @@ RUN apk update \
 
 RUN pip install --upgrade pip
 RUN pip install pipenv
+
 COPY ./Pipfile /usr/src/app/Pipfile
 RUN pipenv install --skip-lock --system --dev
 
@@ -21,4 +27,10 @@ COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 
 COPY . /usr/src/app/
 
+RUN mkdir -p /usr/src/app/media/images/
+RUN mkdir /usr/src/app/static/
+
+RUN chown -R  appuser:appuser /usr/src/app
+
+USER appuser
 ENTRYPOINT [ "/usr/src/app/entrypoint.sh"]

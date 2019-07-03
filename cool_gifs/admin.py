@@ -8,7 +8,7 @@ class ImageAdmin(admin.ModelAdmin):
     date_hierarchy = 'creation_time'
     list_display = ('id', 'title', 'flagged', 'creation_time', 'last_modified')
     list_filter = ('flagged', )
-    readonly_fields = ('height', 'width', 'src', 'content_type')
+    readonly_fields = ('height', 'width', 'content_type')
 
     actions = ['flag_image', 'unflag_image']
 
