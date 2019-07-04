@@ -9,7 +9,7 @@ verify_ssl = true
 django = "==2.2"
 gunicorn = "==19.9"
 pillow = "==6.0"
-djangorestframework = "==3.9"
+djangorestframework = "==3.9.1"
 django-cors-headers = "==2.5"
 
 [requires]
