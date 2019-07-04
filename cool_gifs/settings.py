@@ -143,5 +143,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000',
+    os.environ.get('CORS_ORIGIN', 'localhost'),
 )
+
+FILE_UPLOAD_PERMISSIONS = 0o644
