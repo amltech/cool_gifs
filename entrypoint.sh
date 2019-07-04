@@ -1,5 +1,4 @@
 #!/bin/sh
-whoami
 if [ "$DATABASE" = "postgres" ]
 then
   echo "Waiting for postgres..."
