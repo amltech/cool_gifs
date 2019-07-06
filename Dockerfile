@@ -1,10 +1,10 @@
 FROM python:3.7-alpine
-ARG UID
-ARG GID
-ENV GID=$GID
-ENV UID=$UID
-RUN addgroup -g ${GID} -S appuser && \
-  adduser -u ${UID} -S appuser -G appuser
+#ARG UID
+#ARG GID
+#ENV GID=$GID
+#ENV UID=$UID
+RUN addgroup -g 1000 -S appuser && \
+  adduser -u 1000 -S appuser -G appuser
 
 WORKDIR /usr/src/app
 
