@@ -3,8 +3,8 @@ ARG UID
 ARG GID
 ENV GID=$GID
 ENV UID=$UID
-RUN addgroup -g $GID -S appuser && \
-  adduser -u $UID -S appuser -G appuser
+RUN addgroup -g ${GID} -S appuser && \
+  adduser -u ${UID} -S appuser -G appuser
 
 WORKDIR /usr/src/app
 
