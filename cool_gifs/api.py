@@ -8,7 +8,6 @@ class ImageViewSet(viewsets.ModelViewSet):
     serializer_class = ImageSerializer
     queryset = Image.objects.all()
 
-
     def get_serializer_class(self):
         if self.action == 'update':
             return ImageUpdateSerializer
