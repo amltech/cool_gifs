@@ -25,3 +25,11 @@ class Image(models.Model):
     def __str__(self):
         return str(self.uuid)
 
+
+class Tag(models.Model):
+    image = models.ForeignKey(
+        Image, null=False, on_delete=models.CASCADE, related_name='tags')
+    label = models.CharField(max_length=128, null=False, blank=False)
+
+    def __str__(self):
+        return '{}:{}'.format(self.image.uuid, self.label)

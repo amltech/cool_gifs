@@ -28,6 +28,7 @@ DEBUG = int(os.environ.get('DEBUG', default=0))
 #ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 ALLOWED_HOSTS = ['*'] if DEBUG else [os.environ.get('API_URL', 'nginx')]
 
+INTERNAL_IPS = type(str('c'), (), {'__contains__': lambda *a: True})()
 # Application definition
 
 INSTALLED_APPS = [
@@ -52,6 +53,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    INSTALLED_APPS += ['debug_toolbar']
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 ROOT_URLCONF = 'cool_gifs.urls'
 
