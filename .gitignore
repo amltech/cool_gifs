@@ -4,3 +4,6 @@ db.sqlite3
 __pycache__/
 images/
 cool_gifs/settings.py
+.env
+.env.db
+docker-compose.override.yml
