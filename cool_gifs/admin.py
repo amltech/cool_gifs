@@ -1,7 +1,12 @@
 from django.contrib import admin
 from django.utils import timezone
 
-from .models import Image
+from .models import Image, Tag
+
+
+class TagInline(admin.TabularInline):
+    model = Tag
+
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
@@ -11,6 +16,10 @@ class ImageAdmin(admin.ModelAdmin):
     readonly_fields = ('height', 'width', 'content_type', 'uuid')
 
     actions = ['flag_image', 'unflag_image']
+
+    inlines = [
+        TagInline
+    ]
 
     def flag_image(self, request, queryset):
         queryset.update(flagged=True, last_modified=timezone.now())
