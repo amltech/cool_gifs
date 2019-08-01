@@ -11,7 +11,7 @@ class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image
         fields = ('id', 'uuid', 'permalink', 'content_type', 'flagged', 
-                  'title', 'description', 'height', 'width',)
+                  'title', 'description', 'height', 'width', 'src')
         read_only_fields = ('uuid', 'content_type', 'height', 'width', )
 
     def validate_flagged(self, value):
