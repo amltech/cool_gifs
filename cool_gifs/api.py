@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import filters, viewsets
 
 from . import serializers
 from .models import Image, Tag
@@ -7,6 +7,8 @@ from .models import Image, Tag
 class ImageViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ImageSerializer
     queryset = Image.objects.all()
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title', 'description', 'tags__label']
 
     def get_queryset(self):
         qs = super().get_queryset()

@@ -32,4 +32,4 @@ class ImageSerializer(serializers.HyperlinkedModelSerializer):
 
 class ImageUpdateSerializer(ImageSerializer):
     class Meta(ImageSerializer.Meta):
-        read_only_fields = ('content_type', 'height', 'width', 'src',)
+        read_only_fields = ('content_type', 'height', 'width', 'src', 'tags')
