@@ -8,6 +8,10 @@ class ImageViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ImageSerializer
     queryset = Image.objects.all()
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.prefetch_related('tags')
+
     def get_serializer_class(self):
         if self.action == 'update':
             return serializers.ImageUpdateSerializer
@@ -21,3 +25,6 @@ class TagViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         qs = super().get_queryset()
         return qs.filter(image=self.kwargs['image'])
+    
+    def perform_create(self, serializer):
+        serializer.save(image_id=self.kwargs['image'])

@@ -10,8 +10,10 @@ class TagInline(admin.TabularInline):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
+
     date_hierarchy = 'creation_time'
-    list_display = ('uuid', 'title', 'flagged', 'creation_time', 'last_modified')
+    list_display = ('uuid', 'title', 'flagged', 'creation_time', 
+        'last_modified')
     list_filter = ('flagged', )
     readonly_fields = ('height', 'width', 'content_type', 'uuid')
 

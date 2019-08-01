@@ -27,7 +27,8 @@ class Image(models.Model):
 
 
 class Tag(models.Model):
-    image = models.ForeignKey(Image, null=False, on_delete=models.CASCADE)
+    image = models.ForeignKey(
+        Image, null=False, on_delete=models.CASCADE, related_name='tags')
     label = models.CharField(max_length=128, null=False, blank=False)
 
     def __str__(self):
