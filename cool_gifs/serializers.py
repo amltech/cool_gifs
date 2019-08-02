@@ -13,7 +13,7 @@ class ImageSerializer(serializers.HyperlinkedModelSerializer):
 
     permalink = serializers.HyperlinkedIdentityField(
         view_name='permalink', lookup_field='uuid', lookup_url_kwarg='uuid')
-    tags = TagSerializer(many=True)
+    tags = TagSerializer(many=True, read_only=True)
 
     class Meta:
         model = Image
