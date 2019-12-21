@@ -7,7 +7,7 @@ verify_ssl = true
 django-debug-toolbar = "==2.0"
 
 [packages]
-django = "==2.2.4"
+django = "==2.2.8"
 gunicorn = "==19.9"
 pillow = "==6.2.0"
 djangorestframework = "==3.9.1"
