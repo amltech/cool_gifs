@@ -21,9 +21,9 @@ from . import views
 from .routers import router
 
 urlpatterns = [
-    path('images/<uuid:uuid>', views.PermaLinkView.as_view(), name='permalink'),
-    path('api/', include((router.urls, 'gifs'))),
+    path('images/<uuid:uuid>.gif', views.PermaLinkView.as_view(), name='permalink'),
     path('admin/', admin.site.urls),
+    path('v1/', include((router.urls, 'gifs'))),
 ]
 
 if settings.DEBUG:

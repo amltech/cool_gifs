@@ -21,15 +21,15 @@ RUN apk update \
 RUN pip install --upgrade pip
 RUN pip install pipenv
 
-COPY ./Pipfile /usr/src/app/Pipfile
-RUN pipenv install --skip-lock --system --dev
+COPY ./Pipfile* /usr/src/app/
+RUN pipenv install --system --deploy
 
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 
 COPY . /usr/src/app/
 
 RUN mkdir -p /usr/src/app/media/images/
-RUN mkdir /usr/src/app/static/
+RUN mkdir -p /usr/src/app/static/
 
 RUN chown -R  appuser:appuser /usr/src/app
 
