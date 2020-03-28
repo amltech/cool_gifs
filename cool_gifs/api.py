@@ -27,6 +27,6 @@ class TagViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         qs = super().get_queryset()
         return qs.filter(image=self.kwargs['image'])
-    
+
     def perform_create(self, serializer):
         serializer.save(image_id=self.kwargs['image'])
