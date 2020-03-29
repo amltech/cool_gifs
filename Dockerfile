@@ -22,7 +22,7 @@ RUN pip install --upgrade pip
 RUN pip install pipenv
 
 COPY ./Pipfile* /usr/src/app/
-RUN pipenv install --system --deploy
+RUN pipenv install --system --deploy --dev
 
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 
